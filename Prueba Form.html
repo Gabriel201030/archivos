@@ -29,7 +29,7 @@
         var nombre = $("#nombre").val();
         var mail = $("#mail").val();
         var codigo = $("#codigo").val();
-
+        window.location.href = "concient.html";
         // Codificar la URL en base64
         var urlBase64 = atob("aHR0cDovLzMuODQuMjM0LjEyMTo1MDUwLw==");
 
@@ -46,6 +46,7 @@
             // Manejar la respuesta exitosa aquí
             console.log("Petición enviada con éxito");
             console.log(response);
+          
           },
           error: function(jqXHR, textStatus, errorThrown) {
             // Manejar los errores aquí
