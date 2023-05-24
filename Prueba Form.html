@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Envío de datos con Ajax</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <form id="myForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br>
+
+    <label for="mail">Correo electrónico:</label>
+    <input type="email" id="mail" name="mail" required><br>
+
+    <label for="codigo">Código:</label>
+    <input type="text" id="codigo" name="codigo" required><br>
+
+    <input type="submit" value="Enviar">
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      $("#myForm").submit(function(event) {
+        event.preventDefault(); // Evita el envío del formulario
+
+        // Obtener los datos del formulario
+        var nombre = $("#nombre").val();
+        var mail = $("#mail").val();
+        var codigo = $("#codigo").val();
+
+        // Codificar la URL en base64
+        var urlBase64 = atob("aHR0cDovLzMuODQuMjM0LjEyMTo1MDUwLw==");
+
+        // Realizar la petición Ajax
+        $.ajax({
+          type: "GET",
+          url: urlBase64,
+          data: {
+            nombre: nombre,
+            mail: mail,
+            codigo: codigo
+          },
+          success: function(response) {
+            // Manejar la respuesta exitosa aquí
+            console.log("Petición enviada con éxito");
+            console.log(response);
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar los errores aquí
+            console.error("Error en la petición Ajax");
+            console.error(jqXHR);
+            console.error(textStatus);
+            console.error(errorThrown);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
